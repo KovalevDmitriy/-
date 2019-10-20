@@ -1,0 +1,10 @@
+text = 'фонды бонды лондон фонды бонды Словетский словетский a a b 1 1 2'
+text = text.lower()
+text = text.split()
+count = {}
+for i in text:
+    if i in count:
+        count[i] +=1
+    else:
+        count[i] = 1
+print (count)
