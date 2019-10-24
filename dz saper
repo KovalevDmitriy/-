@@ -34,13 +34,13 @@ for n in range(0, x):
     for k in range(0, y):
         if field[n][k]!='*':
             neigh_bombs = 0
-            for dx in range(-1, 2):
-                for dy in range (-1, 2):
-                    if 0<=n+dx<x and 0<=k+dy<y:
-                        if field[n+dx][k+dy] == '*':
+            for delta_x in range(-1, 2):
+                for delta_y in range (-1, 2):
+                    if 0 <= n + delta_x < x and 0 <= k+delta_y < y:
+                        if field[n+delta_x][k+delta_y] == '*':
                             neigh_bombs += 1
             field[n][k] = neigh_bombs
 for tabl in range(0, x):
     for tabl_ in range(0, y):
-        print(field[tabl][tabl_],end=' ')
+        print(field[tabl][tabl_], end=' ')
     print()
