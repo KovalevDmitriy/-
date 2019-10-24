@@ -1,17 +1,35 @@
 field = []
 a = input('введите: ширину, высоту, количество бомб').split()
-x = int(a[0])
-y = int(a[1])
-bomb_count = int(a[2])
+flag=True
+while flag==True:
+    try:
+        x = int(a[0])
+        y = int(a[1])
+        bomb_count = int(a[2])
+        if x <= 0 or y <= 0 or bomb_count> x * y:
+            print('некорректный ввод данных')
+        else:
+            flag=False
+    except ValueError:
+        print('начните сначала и введите корректные данные')
 for i in range(0, x):
     field.append({})
     for j in range(0, y):
         field[i][j]=0
 for m in range(0, bomb_count):
-    b=input('Введите координаты всех бомб по очереди: x,y').split()
-    bomb_x=int(b[0])
-    bomb_y=int(b[1])
-    field[bomb_x][bomb_y] = '*'
+    try:
+        b=input('Введите координаты всех бомб по очереди: x,y').split()
+        bomb_x=int(b[0])
+        bomb_y=int(b[1])
+        if field[bomb_x][bomb_y] != '*':
+            field[bomb_x][bomb_y] = '*'
+        else:
+            print('в данной клетке уже есть бомба')
+    except ValueError:
+        print('начните сначала и введите корректные данные')
+    except IndexError:
+        print('на поле нет клетки с такими координатами,\n'
+              'начните сначала и введите корректные данные:')
 for n in range(0, x):
     for k in range(0, y):
         if field[n][k]!='*':
@@ -26,4 +44,3 @@ for tabl in range(0, x):
     for tabl_ in range(0, y):
         print(field[tabl][tabl_],end=' ')
     print()
-
